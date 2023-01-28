@@ -1,0 +1,36 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./build/bin/www",
+    "build": "npx tsc",
+    "server": "node build/app.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/app.js\""
+  },
+  "dependencies": {
+    "async": "^3.2.4",
+    "binance": "^2.2.11",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "https": "^1.0.0",
+    "morgan": "~1.9.1",
+    "pug": "^2.0.4",
+    "request": "^2.88.2",
+    "ws": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.16",
+    "@types/express": "^4.17.16",
+    "@types/http-errors": "^2.0.1",
+    "@types/node": "^18.11.18",
+    "@types/request": "^2.48.8",
+    "@types/ws": "^8.5.4",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.4"
+  }
+}
