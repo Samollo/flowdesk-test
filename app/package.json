@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./build/bin/www",
+    "start": "node ./build/www",
     "build": "npx tsc",
     "server": "node build/app.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/app.js\""

@@ -1,5 +1,5 @@
 import async from "async";
-import { Callback } from "../../utils";
+import { Callback } from "../../../utils";
 import { getOrderBookFromBinance, computeMidPriceBinance } from "./binance";
 import { getOrderBookFromHuobi, computeMidPriceHuobi } from "./huobi";
 import { getOrderBookFromKraken, computeMidPriceKraken } from "./kraken";

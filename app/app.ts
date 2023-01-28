@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var globalPriceIndex = require('./routes/globalPriceIndex');
+var indexRouter = require('./src/routes/index');
+var globalPriceIndex = require('./src/routes/globalPriceIndex');
 
 var app = express();
 
@@ -21,7 +20,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/GlobalPriceIndex', globalPriceIndex);
 
 // catch 404 and forward to error handler

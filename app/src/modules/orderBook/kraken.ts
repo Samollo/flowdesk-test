@@ -1,5 +1,5 @@
 import request from "request";
-import { Callback } from "../../utils";
+import { Callback } from "../../../utils";
 import { KrakenOrderBookResponse, krakenUrl } from "./types";
 
 export const getOrderBookFromKraken = (cb: Callback<KrakenOrderBookResponse>) => {

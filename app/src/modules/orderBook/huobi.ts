@@ -1,5 +1,5 @@
 import request from "request";
-import { Callback } from "../../utils";
+import { Callback } from "../../../utils";
 import { HuobiOrderBookResponse, huobiUrl } from "./types";
 
 export const getOrderBookFromHuobi = (cb: Callback<HuobiOrderBookResponse>) => {

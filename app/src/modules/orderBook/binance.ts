@@ -1,5 +1,5 @@
 import WebSocket from "ws";
-import { Callback } from "../../utils";
+import { Callback } from "../../../utils";
 import { BinanceOrderBook, BinanceOrderBookResponse, binanceWebSocketUrl } from "./types";
 
 const body = {
