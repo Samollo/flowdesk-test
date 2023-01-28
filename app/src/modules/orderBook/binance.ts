@@ -1,6 +1,10 @@
 import WebSocket from "ws";
 import { Callback } from "../../../utils";
-import { BinanceOrderBook, BinanceOrderBookResponse, binanceWebSocketUrl } from "./types";
+import {
+  BinanceOrderBook,
+  BinanceOrderBookResponse,
+  binanceWebSocketUrl,
+} from "./types";
 
 const body = {
   id: "51e2affb-0aba-4821-ba75-f2625006eb43",
@@ -11,16 +15,14 @@ const body = {
   },
 };
 
-export const getOrderBookFromBinance = (
-  cb: Callback<BinanceOrderBook>
-) => {
+export const getOrderBookFromBinance = (cb: Callback<BinanceOrderBook>) => {
   const socket = new WebSocket(binanceWebSocketUrl);
 
   socket.onopen = (_event) => {
     socket.send(JSON.stringify(body));
   };
   socket.onmessage = (event) => {
-    const res : BinanceOrderBookResponse = JSON.parse(event.data.toString());
+    const res: BinanceOrderBookResponse = JSON.parse(event.data.toString());
     socket.close();
     return cb(null, res.result);
   };

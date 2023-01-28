@@ -3,7 +3,11 @@ import { Callback } from "../../../utils";
 import { getOrderBookFromBinance, computeMidPriceBinance } from "./binance";
 import { getOrderBookFromHuobi, computeMidPriceHuobi } from "./huobi";
 import { getOrderBookFromKraken, computeMidPriceKraken } from "./kraken";
-import { BinanceOrderBook, HuobiOrderBookResponse, KrakenOrderBookResponse } from "./types";
+import {
+  BinanceOrderBook,
+  HuobiOrderBookResponse,
+  KrakenOrderBookResponse,
+} from "./types";
 
 export const getGlobalPriceIndex = (cb: Callback<number>) => {
   interface AsyncResults {
