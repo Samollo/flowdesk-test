@@ -11,23 +11,3 @@ export const getOrderBookFromHuobi = (cb: Callback<HuobiOrderBookResponse>) => {
     return cb(null, orderBook);
   });
 };
-
-export const computeMidPriceHuobi = (orderBook: HuobiOrderBookResponse) => {
-  const huobiAsks = orderBook.tick.asks;
-  const huobiBids = orderBook.tick.bids;
-
-  let asks: number[] = [];
-  let bids: number[] = [];
-
-  huobiAsks.forEach((e) => {
-    asks.push(Number(e[0]));
-  });
-
-  huobiBids.forEach((e) => {
-    bids.push(Number(e[0]));
-  });
-
-  asks.sort();
-  bids.sort();
-  return (asks[0] + bids[bids.length - 1]) / 2;
-};

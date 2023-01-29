@@ -1,8 +1,9 @@
 import async from "async";
 import { Callback } from "../../../utils";
-import { getOrderBookFromBinance, computeMidPriceBinance } from "./binance";
-import { getOrderBookFromHuobi, computeMidPriceHuobi } from "./huobi";
-import { getOrderBookFromKraken, computeMidPriceKraken } from "./kraken";
+import { getOrderBookFromBinance } from "./binance";
+import { computeMidPrice } from "./computeMidPrice";
+import { getOrderBookFromHuobi } from "./huobi";
+import { getOrderBookFromKraken } from "./kraken";
 import {
   BinanceOrderBook,
   HuobiOrderBookResponse,
@@ -25,17 +26,22 @@ export const getGlobalPriceIndex = (cb: Callback<number>) => {
       if (error) {
         return cb(error);
       }
-      let midPrice = 0;
+      let globalPriceIndex = 0;
       if (results) {
-        const binance = computeMidPriceBinance(results.binance);
-        const kraken = computeMidPriceKraken(results.kraken);
-        const huobi = computeMidPriceHuobi(results.huobi);
-        console.log({ binance });
-        console.log({ kraken });
-        console.log({ huobi });
-        midPrice = (binance + kraken + huobi) / 3;
+        const { binance, kraken, huobi } = results;
+        const binanceMidPrice = computeMidPrice(binance.asks, binance.bids);
+        const krakenMidPrice = computeMidPrice(
+          kraken.result["XBTUSDT"].asks,
+          kraken.result["XBTUSDT"].bids
+        );
+        const huobiMidPrice = computeMidPrice(huobi.tick.asks, huobi.tick.bids);
+        console.log({ binance: binanceMidPrice });
+        console.log({ kraken: krakenMidPrice });
+        console.log({ huobi: huobiMidPrice });
+        globalPriceIndex =
+          (binanceMidPrice + krakenMidPrice + huobiMidPrice) / 3;
       }
-      return cb(null, midPrice);
+      return cb(null, globalPriceIndex);
     }
   );
 };

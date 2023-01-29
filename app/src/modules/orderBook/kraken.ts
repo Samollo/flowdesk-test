@@ -13,18 +13,3 @@ export const getOrderBookFromKraken = (
     return cb(null, orderBook);
   });
 };
-
-export const computeMidPriceKraken = (orderBook: KrakenOrderBookResponse) => {
-  let asks: number[] = [];
-  let bids: number[] = [];
-
-  orderBook.result["XBTUSDT"].asks.forEach((e) => {
-    asks.push(Number(e[0]));
-  });
-  orderBook.result["XBTUSDT"].bids.forEach((e) => {
-    bids.push(Number(e[0]));
-  });
-  asks.sort();
-  bids.sort();
-  return (asks[0] + bids[bids.length - 1]) / 2;
-};
