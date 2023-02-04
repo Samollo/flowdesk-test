@@ -1,0 +1,32 @@
+{
+  "exchanges": [
+    {
+      "service": "binance",
+      "type": "WS",
+      "url": "wss://ws-api.binance.com:443/ws-api/v3",
+      "toLowerCase": false,
+      "request": {
+        "id": "51e2affb-0aba-4821-ba75-f2625006eb43",
+        "method": "depth",
+        "params": {
+          "symbol": "",
+          "limit": 0
+        }
+      }
+    },
+    {
+      "service": "kraken",
+      "type": "REST",
+      "url": "https://api.kraken.com/0/public/Depth?pair=%SYMBOL%&count=%LIMIT%",
+      "toLowerCase": false,
+      "request": {}
+    },
+    {
+      "service": "huobi",
+      "type": "REST",
+      "url": "https://api.huobi.pro/market/depth?symbol=%SYMBOL%&depth=%LIMIT%&type=step0",
+      "toLowerCase": true,
+      "request": {}
+    }
+  ]
+}
