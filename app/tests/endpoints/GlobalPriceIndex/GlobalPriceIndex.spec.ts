@@ -1,6 +1,4 @@
-// tests/calculator.spec.tx
 import { assert } from "chai";
-import sinon from "sinon";
 import nock from "nock";
 import request from "supertest";
 
@@ -118,7 +116,6 @@ const huobiResponse = {
   },
 };
 
-sinon.fakeServer.create();
 describe("flowdesk-test/GlobalPriceIndex", () => {
   it("#Success - Return global price index for 3 exchanges", () => {
     const symbol = "BTCUSDT";
