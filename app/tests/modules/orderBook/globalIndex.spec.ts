@@ -1,4 +1,3 @@
-// tests/calculator.spec.tx
 import { assert } from "chai";
 import { globalIndex } from "../../../src/modules/orderBook";
 import { fixtures } from "./fixtures";
